@@ -1,0 +1,1 @@
+# cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods
