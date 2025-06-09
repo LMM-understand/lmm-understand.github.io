@@ -340,3 +340,13 @@ div.paper i.fas {
 		font-size: 13px;
 	}
 }
+.speaker-item {
+    margin-bottom: 30px;
+    min-height: 230px; /* Adjust based on your content height */
+}
+
+.people-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}

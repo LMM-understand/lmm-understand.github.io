@@ -2,175 +2,240 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <meta name="keywords"
-        content="cvpr, tutorial, cvpr-2025, cvpr2025, computer vision, machine learning, multi-modal models, evaluation, large language models, vision-language models">
+    <meta name="keywords"
+          content="cvpr, tutorial, cvpr-2025, cvpr2025, computer vision, machine learning, multi-modal models, evaluation, large language models, vision-language models">
 
-  <link rel="shortcut icon" href="./img/CVPR-logo.svg">
+    <link rel="shortcut icon" href="./img/CVPR-logo.svg">
 
 
+    <title>CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods</title>
+    <meta name="description"
+          content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods ---">
 
-  <title>CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods</title>
-  <meta name="description" content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods ---">
+    <!--Open Graph Related Stuff-->
+    <meta property="og:title"
+          content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods"/>
+    <meta property="og:url"
+          content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods"/>
+    <meta property="og:description"
+          content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods"/>
+    <meta property="og:site_name"
+          content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods"/>
+    <meta property="og:image"
+          content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods/img/cvpr2025.jpg"/>
+    <meta property="og:image:url"
+          content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods/img/cvpr2025.jpg"/>
 
-  <!--Open Graph Related Stuff-->
-  <meta property="og:title" content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods" />
-  <meta property="og:url" content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods" />
-  <meta property="og:description" content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods" />
-  <meta property="og:site_name" content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods" />
-  <meta property="og:image"
-        content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods/img/cvpr2025.jpg" />
-  <meta property="og:image:url"
-        content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods/img/cvpr2025.jpg" />
+    <!--Twitter Card Stuff-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@ucsb_nlp">
+    <meta name="twitter:title"
+          content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods"/>
+    <meta name="twitter:image"
+          content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods/img/cvpr2025.jpg">
+    <meta name="twitter:url"
+          content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods"/>
+    <meta name="twitter:description"
+          content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods"/>
 
-  <!--Twitter Card Stuff-->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@ucsb_nlp">
-  <meta name="twitter:title" content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods" />
-  <meta name="twitter:image"
-        content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods/img/cvpr2025.jpg">
-  <meta name="twitter:url" content="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods" />
-  <meta name="twitter:description" content="CVPR 2025 Tutorial on Evaluating Large Multi-modal Models: Challenges and Methods" />
+    <!-- CSS  -->
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css?1" media="screen,projection">
 
-  <!-- CSS  -->
-  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="./css/main.css?1" media="screen,projection">
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/ff6e9b10da.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/ff6e9b10da.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
 <!-- <div class="top-strip"></div> -->
 <div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
+    <div class="container">
 
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/"></a>
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"></a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li><a href="#speakers">Speakers</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#organizers">About Us</a></li>
+            </ul>
+        </div>
+
     </div>
-
-    <div class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li><a href="#speakers">Speakers</a></li>
-        <li><a href="#schedule">Schedule</a></li>
-        <li><a href="#organizers">About Us</a></li>
-      </ul>
-    </div>
-
-  </div>
 </div>
 
 
 <div class="container">
-  <div class="page-content">
-    <p><br /></p>
-    <div class="row">
-      <div class="col-xs-12">
+    <div class="page-content">
+        <p><br/></p>
+        <div class="row">
+            <div class="col-xs-12">
+                <center>
+                    <h2><b>CVPR 2025 Tutorial:</b></h2>
+                </center>
+                <br>
+                <center>
+                    <h1>Evaluating Large Multi-modal Models: Challenges and Methods</h1>
+                </center>
+                <center><b>Date</b>: June 11th, 2025 <br/>
+                    <b>Time</b>: 13:00-17:00 <br/>
+                    <b>Location</b>109 <br/>
+                </center>
+
+            </div>
+        </div>
+
         <center>
-          <h2><b>CVPR 2025 Tutorial:</b></h2>
-        </center><br>
-        <center>
-          <h1>Evaluating Large Multi-modal Models: Challenges and Methods</h1>
+            <br>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
+                <img src="./img/cvpr2025.jpg" alt="CVPR 2025" style="height: 140px; width: auto;"/>
+                <img src="./img/ucsb.png" alt="UC Santa Barbara" style="height: 140px; width: auto;"/>
+                <img src="./img/william.png" alt="William & Mary" style="height: 140px; width: auto;"/>
+            </div>
+            <br>
         </center>
-        <center><b>Date</b>: TBD, 2025 <br />
-          <b>Time</b>: TBD <br />
-          <b>Location</b>: TBD <br />
-        </center>
 
-      </div>
-    </div>
+        <br>
+        <h5 style="color:darkred;text-align:center">
+            <b>
+                Slides: Available Soon<br>
+                <!--        <a href="#">[Part 1 - XXX]</a>-->
+                <!--        <a href="#">[Part 2 - XXX]</a>-->
+                <!--        <a href="#">[Part 3 - XXX]</a>-->
+                <!--        <br>-->
+                <!--        <br>-->
+                <!--        <a href="#">[Paper List]</a>-->
+                <!-- <a href="#">[Recording]</a> -->
+            </b>
+        </h5>
+        <!-- <h4 style="color:darkred;text-align:center">
+          <b>
+            Recording of tutorial is now available <a href="#">[here].</a>
+          </b>
+        </h4> -->
+        <br>
 
-    <center>
-      <br>
-      <a>
-        <img width="300px" src="./img/cvpr2025.jpg" />
-      </a>
-      <br>
-    </center>
-
-    <br>
-    <h5 style="color:darkred;text-align:center">
-      <b>
-        Slides:
-        <a href="#">[Part 1 - XXX]</a>
-        <a href="#">[Part 2 - XXX]</a>
-        <a href="#">[Part 3 - XXX]</a>
+        <br/>
+        <h2>Overview</h2>
+        <br/>
+        <p>
+            The proliferation of large multi-modal models (LMMs) has raised increasing concerns about their security and
+            risks, which are mainly due to a lack of understanding of their capabilities and limitations. In this
+            tutorial, our aim is to fill this gap by presenting a holistic overview of LMM evaluation. First, we discuss
+            the recent advance of LMMs evaluation from the perspectives of what, where, and how to evaluate. Then, we
+            present several key challenges in LMM evaluation such as data contamination and fixed complexity. Based on
+            these challenges, we introduce how to overcome these challenges. Furthermore, our discussion covers key
+            evaluation metrics including trustworthiness, robustness, and fairness, as well as performance across
+            diverse downstream tasks in natural and social sciences. We conclude with an overview of widely-used code
+            libraries and benchmarks that support these evaluation efforts. We hope that academic and industrial
+            researchers continue to work to make LMMs more secure, responsible, and accurate.
+        </p>
+        <br id="speakers">
         <br>
         <br>
-        <a href="#">[Paper List]</a>
-        <!-- <a href="#">[Recording]</a> -->
-      </b>
-    </h5>
-    <!-- <h4 style="color:darkred;text-align:center">
-      <b>
-        Recording of tutorial is now available <a href="#">[here].</a>
-      </b>
-    </h4> -->
-    <br>
-
-    <br />
-    <h2>Overview</h2>
-    <br />
-    <p>
-      The emergence of large multi-modal models (LMMs) has revolutionized the field of computer vision and natural language processing. These models can understand and generate content across different modalities, including text, images, and videos. However, evaluating the capabilities and limitations of these models presents unique challenges. This tutorial provides a comprehensive exploration of the evaluation methods for large multi-modal models, addressing both technical challenges and practical considerations. We welcome students, researchers, and practitioners interested in understanding how to rigorously assess LMMs, identify their strengths and weaknesses, and develop more robust evaluation frameworks for the future generation of multi-modal AI systems.
-    </p>
-    <br id="speakers">
-    <br>
-    <br>
-    <br>
-
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>Speakers</h2><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-
+        <br>
 
         <div class="row">
-          <div class="col-xs-4" id="kaijie">
-            <center>
-              <a href="#">
-                <img class="people-pic" src="./img/people/kaijie.jpg" />
-              </a>
-              <div class="people-name">
-                <a href="#">Kaijie Zhu</a>
-                <h6>UC Santa Barbara</h6>
-              </div>
-            </center>
-          </div>
-          <div class="col-xs-4" id="yuzhou">
-            <center>
-              <a href="#">
-                <img class="people-pic" src="./img/people/yuzhou.png" />
-              </a>
-              <div class="people-name">
-                <a href="#">Yuzhou Nie</a>
-                <h6>UC Santa Barbara</h6>
-              </div>
-            </center>
-          </div>
-          <div class="col-xs-4" id="xiao">
-            <center>
-              <a href="#">
-                <img class="people-pic" src="./img/people/xiao.png" />
-              </a>
-              <div class="people-name">
-                <a href="#">Xiao Pu</a>
-                <h6>UC Santa Barbara</h6>
-              </div>
-            </center>
-          </div>
+            <div class="col-xs-12">
+                <h2>Speakers</h2><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row speakers-container">
+                    <!-- First row -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 speaker-item">
+                        <center>
+                            <a href="https://immortalise.github.io/">
+                                <img class="people-pic" src="./img/people/kaijie.png"/>
+                            </a>
+                            <div class="people-name">
+                                <a href="https://immortalise.github.io/">Kaijie Zhu</a>
+                                <h6>UCSB</h6>
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 speaker-item">
+                        <center>
+                            <a href="https://saxon.me/">
+                                <img class="people-pic" src="./img/people/michael.png"/>
+                            </a>
+                            <div class="people-name">
+                                <a href="https://saxon.me/">Michael Saxon</a>
+                                <h6>UCSB</h6>
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 speaker-item">
+                        <center>
+                            <a href="https://sophiapx.github.io/">
+                                <img class="people-pic" src="./img/people/xiao.jpg" alt=""/>
+                            </a>
+                            <div class="people-name">
+                                <a href="https://sophiapx.github.io/">Sophia Pu</a>
+                                <h6>UCSB</h6>
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 speaker-item">
+                        <center>
+                            <a href="https://rucnyz.github.io/">
+                                <img class="people-pic" src="./img/people/yuzhou.jpg"/>
+                            </a>
+                            <div class="people-name">
+                                <a href="https://rucnyz.github.io/">Yuzhou Nie</a>
+                                <h6>UCSB</h6>
+                            </div>
+                        </center>
+                    </div>
+                    <!-- Second row -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 speaker-item">
+                        <center>
+                            <a href="https://scholar.google.com/citations?user=tktqkhwAAAAJ&hl=en">
+                                <img class="people-pic" src="./img/people/hao.jpg"/>
+                            </a>
+                            <div class="people-name">
+                                <a href="https://scholar.google.com/citations?user=tktqkhwAAAAJ&hl=en">Hao Chen</a>
+                                <h6>AMD</h6>
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 speaker-item">
+                        <center>
+                            <a href="https://henrygwb.github.io/">
+                                <img class="people-pic" src="./img/people/wenbo.png"/>
+                            </a>
+                            <div class="people-name">
+                                <a href="https://henrygwb.github.io/">Wenbo Guo</a>
+                                <h6>UCSB</h6>
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 speaker-item">
+                        <center>
+                            <a href="https://jd92.wang/">
+                                <img class="people-pic" src="./img/people/jindong.jpg"/>
+                            </a>
+                            <div class="people-name">
+                                <a href="https://jd92.wang/">Jindong Wang</a>
+                                <h6>William & Mary</h6>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <br id="schedule">
@@ -179,39 +244,64 @@
         <br>
 
         <div class="row">
-          <div class="col-xs-12">
-            <h2>Schedule</h2>
-            <table class="table schedule" style="border:none !important;">
-              <thead class="thead-light">
-              <tr>
-                <th>Title</th>
-                <th>Speaker</th>
-                <th>Time</th>
-              </tr>
-              </thead>
-              <tbody>
+            <div class="col-xs-12">
+                <h2>Schedule</h2>
+                <table class="table schedule" style="border:none !important;">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>Title</th>
+                        <th>Speaker</th>
+                        <th>Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-              <tr>
-                <td><b>XXX</b> <br />XXX</td>
-                <td><a href="#">Kaijie Zhu</a></td>
-                <td>TBD</td>
-              </tr>
+                    <tr>
+                        <td><b>Background and Challenges</b> <br/>An introduction to large multi-modal models (LMMs) and key
+                            evaluation challenges
+                        </td>
+                        <td><a href="https://immortalise.github.io/">Kaijie Zhu</a></td>
+                        <td>20 min</td>
+                    </tr>
 
-              <tr>
-                <td><b>XXX</b> <br />XXX</td>
-                <td><a href="#">Yuzhou Nie</a></td>
-                <td>TBD</td>
-              </tr>
+                    <tr>
+                        <td><b>Dynamic Evaluation</b> <br/>Methods and approaches for evaluating LMMs in dynamic
+                            contexts
+                        </td>
+                        <td><a href="https://immortalise.github.io/">Kaijie Zhu</a></td>
+                        <td>40 min</td>
+                    </tr>
 
-              <tr>
-                <td><b>XXX</b> <br />XXX</td>
-                <td><a href="#">Xiao Pu</a></td>
-                <td>TBD</td>
-              </tr>
+                    <tr>
+                        <td><b>Measurement Challenges</b> <br/>Key metrics and methodological issues in LMM evaluation
+                        </td>
+                        <td><a href="https://sophiapx.github.io/">Sophia Pu</a></td>
+                        <td>40 min</td>
+                    </tr>
 
-              </tbody>
-            </table>
-          </div>
+                    <tr>
+                        <td><b>Safety Issues</b> <br/>Evaluating and addressing security risks in LMMs</td>
+                        <td><a href="https://rucnyz.github.io/">Yuzhou Nie</a></td>
+                        <td>40 min</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Evaluation in Social Science</b> <br/>Applications and evaluation methods for LMMs in
+                            social sciences
+                        </td>
+                        <td><a href="https://scholar.google.com/citations?user=tktqkhwAAAAJ&hl=en">Hao Chen</a></td>
+                        <td>40 min</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Conclusion and Discussion</b> <br/>Summary of key takeaways and Q&A</td>
+                        <td><a href="https://scholar.google.com/citations?user=tktqkhwAAAAJ&hl=en">Hao Chen</a></td>
+                        <td>20 min</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <br id="organizers">
@@ -220,88 +310,37 @@
         <br>
 
         <div class="row">
-          <div class="col-xs-12">
-            <h2>About Us</h2>
-          </div>
-        </div>
-
-        <div class="row speaker" id="kaijie">
-          <div class="col-sm-3" style="text-align: center">
-            <a href="#">
-              <img class="people-pic" src="./img/people/kaijie.jpg" />
-            </a>
-            <div class="people-name">
-              <a href="#">Kaijie Zhu</a> <a
-                    href="#"><img
-                    src="./img/Twitter_Social_Icon_Rounded_Square_Color.png" /></a>
-              <h6>UC Santa Barbara</h6>
+            <div class="col-xs-12">
+                <h2>About Us</h2>
             </div>
-          </div>
-          <div class="col-md-9">
-            <p class="speaker-bio">
-              Kaijie Zhu is a PhD student in the Department of Computer Science at the University of California, Santa Barbara.
-            </p>
-          </div>
         </div>
 
-        <div class="row speaker" id="yuzhou">
-          <div class="col-sm-3" style="text-align: center">
-            <a href="#">
-              <img class="people-pic" src="./img/people/yuzhou.png" />
-            </a>
-            <div class="people-name">
-              <a href="#">Yuzhou Nie</a> <a
-                    href="#"><img
-                    src="./img/Twitter_Social_Icon_Rounded_Square_Color.png" /></a>
-              <h6>UC Santa Barbara</h6>
-            </div>
-          </div>
-          <div class="col-md-9">
-            <p class="speaker-bio">
-              Yuzhou Nie is a PhD student at the University of California, Santa Barbara.
-            </p>
-          </div>
-        </div>
-
-        <div class="row speaker" id="xiao">
-          <div class="col-sm-3" style="text-align: center">
-            <a href="#">
-              <img class="people-pic" src="./img/people/xiao.png" />
-            </a>
-            <div class="people-name">
-              <a href="#">Xiao Pu</a> <a href="#"><img
-                    src="./img/Twitter_Social_Icon_Rounded_Square_Color.png" /></a>
-              <h6>UC Santa Barbara</h6>
-            </div>
-          </div>
-          <div class="col-md-9">
-            <p class="speaker-bio">
-              Xiao Pu is a PhD student at the University of California, Santa Barbara.
-            </p>
-          </div>
-        </div>
-
-
-        <br />
         <div class="section text-gray" id="footer">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-2">
-              </div>
-              <!-- /.6 -->
-              <div class="col-sm-10">
-                <p><small>&copy; 2025 <a href="https://showlab.github.io/cvpr2025-tutorial-Evaluating-Large-Multi-modal-Models-Challenges-and-Methods"
-                                         class="external">Kaijie Zhu, Yuzhou Nie, Xiao Pu</a>.
-                  Template by <a href="https://cvpr2023-tutorial-diffusion-models.github.io/" class="external">
-                    Jiaming Song, Chenlin Meng, Arash Vahdat</a>.</small></p>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div class="container">
 
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <!-- <p class="social">
+                            <a href="mailto:organizers@pirm2018.org" class="email" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
+                        </p> -->
+                    </div>
+                    <!-- /.6 -->
+                    <div class="col-sm-6">
+                        <p><small>&copy; 2025 <a href="https://ucsb-mlsec.github.io/mllm-eval/" class="external">Kaijie Zhu</a>.
+                            Template by <a href="https://nvlabs.github.io/eccv2020-limited-labels-data-tutorial/"
+                                           class="external">Shalini De Mello</a>.</small></p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
 
         <script type="text/javascript" src="/static/js/jquery.min.js"></script>
         <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    </div>
+</div>
 </body>
 
 </html>
